@@ -1,0 +1,156 @@
+:root {
+  --azul: #0f172a;
+  --amarillo: #facc15;
+  --gris: #e5e7eb;
+}
+
+/* ================= RESET ================= */
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:'Inter', sans-serif;
+}
+
+/* ================= FONDO GENERAL ================= */
+/* 👉 CAMBIÁ ESTA IMAGEN SI QUERÉS UN FONDO PARA TODA LA PÁGINA */
+
+body{
+  background-image: url("../img/15.jpg"); /* ← CAMBIÁ ESTA RUTA */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  color: var(--azul);
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:1rem 2rem;
+  background-color: var(--azul);
+  color:white;
+  position:relative;
+  z-index:1000;
+}
+
+.nav-left{
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+}
+
+.logo{
+  height:72px;
+}
+
+.navbar h1{
+  font-size:1.25rem;
+  font-weight:600;
+}
+
+.navbar nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:1rem;
+  font-weight:500;
+}
+
+/* BOTÓN FORMULARIOS – EXACTO */
+.form-button {
+  background-color: #00aaff;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  position: relative;
+  right: px;
+}
+
+/* ================= HERO ================= */
+/* 👉 ESTA ES LA IMAGEN PRINCIPAL DEL HERO */
+
+.hero{
+  height:55vh;
+  background-image:
+    linear-gradient(rgba(15,23,42,.7), rgba(15,23,42,.7)),
+    url("../img/hero-mmo.jpg"); /* ← CAMBIÁ ESTA IMAGEN */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+}
+
+.hero h2{
+  font-size:2.8rem;
+}
+
+.hero p{
+  font-size:1.1rem;
+  opacity:.9;
+}
+
+/* ================= CONTENIDO ================= */
+
+.contenido{
+  max-width:1000px;
+  margin:0 auto;
+  padding:4rem 2rem;
+}
+
+.bloque{
+  background:white;
+  border-radius:10px;
+  padding:2rem;
+  margin-bottom:2rem;
+  box-shadow:0 10px 25px rgba(0,0,0,.06);
+}
+
+.bloque h3{
+  font-size:1.5rem;
+  margin-bottom:1rem;
+  color: var(--azul);
+}
+
+.bloque p{
+  line-height:1.7;
+}
+
+.bloque ul{
+  margin-left:1.2rem;
+}
+
+.bloque li{
+  margin:.5rem 0;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+  .navbar{
+    flex-direction:column;
+    gap:.8rem;
+  }
+
+  .hero h2{
+    font-size:2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* ajustes mobile */
+}

@@ -1,0 +1,173 @@
+:root {
+  --azul: #0f172a;
+  --amarillo: #facc15;
+  --gris: #e5e7eb;
+}
+
+/* ================= RESET ================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter', sans-serif;
+}
+
+/* ================= FONDO GENERAL ================= */
+
+body{
+  background-image: url("../img/taller1-bg.png"); /* ← CAMBIAR */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  color: var(--azul);
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:1rem 2rem;
+  background-color: var(--azul);
+  color:white;
+}
+
+.nav-left{
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+}
+
+.logo{
+  height:72px;
+}
+
+.navbar h1{
+  font-size:1.25rem;
+}
+
+.navbar nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:1rem;
+}
+
+/* BOTÓN FORMULARIOS */
+.form-button {
+  background-color: #00aaff;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  height:50vh;
+  background-image:
+    linear-gradient(rgba(15,23,42,.75), rgba(15,23,42,.75)),
+    url("../img/hero-intertribu.jpg"); /* ← CAMBIAR */
+  background-size: cover;
+  background-position: center;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:white;
+}
+
+.hero h2{
+  font-size:2.8rem;
+}
+
+/* ================= SECCIONES ================= */
+
+.intro,
+.estructura,
+.dias,
+.galeria{
+  max-width:1100px;
+  margin:0 auto;
+  padding:4rem 2rem;
+}
+
+.intro{
+  background:white;
+  border-radius:14px;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.estructura{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+  gap:2rem;
+}
+
+.bloque,
+.dia{
+  background:white;
+  padding:2rem;
+  border-radius:14px;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.dias{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+  gap:2rem;
+}
+
+/* ================= GALERÍA ================= */
+
+.galeria h2{
+  text-align:center;
+  margin-bottom:.5rem;
+}
+
+.nota{
+  text-align:center;
+  font-size:.9rem;
+  opacity:.7;
+  margin-bottom:2rem;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+  gap:1rem;
+}
+
+.foto{
+  background:var(--gris);
+  height:160px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:10px;
+  color:#555;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+  .navbar{
+    flex-direction:column;
+    gap:.8rem;
+  }
+
+  .hero h2{
+    font-size:2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* ajustes mobile */
+}

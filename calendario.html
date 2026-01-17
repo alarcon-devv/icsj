@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendario Académico | Instituto Centro San José</title>
+<link rel="icon" href="img/sj-logo.png">
+  <link rel="stylesheet" href="css/style-calendario.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+
+<header class="navbar">
+  <div class="nav-left">
+    <img src="img/sj-logo.png" alt="Logo Instituto Centro San José" class="logo">
+    <h1>Instituto Centro San José</h1>
+  </div>
+
+  <nav>
+    <a href="formularios.html" target="_blank" class="form-button">Formularios</a>
+    <a href="index.html">Inicio</a>
+    <a href="descargas.html">Descargas</a>
+    <a href="reglamento.html">Reglamento</a>
+    <a href="calendario.html">Calendario</a>
+    <a href="intertribu.html">Intertribu</a>
+    <a href="valores.html">Valores</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <h2>Calendario Académico</h2>
+    <p>Ciclo lectivo · Fechas importantes · Actividades institucionales</p>
+  </div>
+</section>
+
+<section class="calendario">
+
+  <div class="evento">
+    <span class="fecha">📘 Marzo</span>
+    <h3>Inicio del ciclo lectivo</h3>
+    <p>Comienzo de clases para todos los cursos.</p>
+  </div>
+
+  <div class="evento">
+    <span class="fecha">🧪 Abril</span>
+    <h3>Evaluaciones diagnósticas</h3>
+    <p>Instancias de evaluación inicial por especialidad.</p>
+  </div>
+
+  <div class="evento">
+    <span class="fecha">🛠️ Junio</span>
+    <h3>Prácticas y talleres intensivos</h3>
+    <p>Actividades técnicas en talleres.</p>
+  </div>
+
+  <div class="evento">
+    <span class="fecha">📚 Julio</span>
+    <h3>Receso invernal</h3>
+    <p>Vacaciones de invierno.</p>
+  </div>
+
+  <div class="evento">
+    <span class="fecha">📝 Septiembre</span>
+    <h3>Mes de evaluaciones trimestrales</h3>
+    <p>Instancias de evaluación integradora.</p>
+  </div>
+
+  <div class="evento">
+    <span class="fecha">🎓 Diciembre</span>
+    <h3>Cierre del ciclo lectivo</h3>
+    <p>Finalización de clases y actos institucionales.</p>
+  </div>
+
+</section>
+
+<div class="calendar">
+    <div class="header">
+      <button id="prev">&lt;</button>
+      <div id="month"></div>
+      <button id="next">&gt;</button>
+
+    </div>
+    <div class="weekdays">
+      <div>Lun</div><div>Mar</div><div>Mié</div><div>Jue</div>
+      <div>Vie</div><div>Sáb</div><div>Dom</div>
+    </div>
+    <div class="days" id="days"></div>
+  </div>
+
+  <div class="event-form">
+    <h3>Agregar nuevo evento</h3>
+    <input type="number" id="input-dia" placeholder="Día (1-31)">
+    <input type="number" id="input-mes" placeholder="Mes (1-12)">
+    <input type="number" id="input-anio" placeholder="Año (ej: 2025)">
+    <input type="text" id="input-descripcion" placeholder="¿Qué pasará ese día?">
+    <select id="input-tipo">
+      <option value="feriado">🔴 Feriado</option>
+      <option value="examen">🟡 Espacio Libre</option>
+      <option value="acto">🔵 Acto</option>
+      <option value="evento">🟢 Evento</option>
+      <option value="reunion">🟣 Jornada Docente</option>
+    </select>
+
+    <button onclick="agregarEvento()">Agregar evento</button>
+  </div>
+
+  <button id="borrar-eventos">Borrar todos los eventos</button>
+
+  <div class="event-list">
+    <h3>Lista de eventos</h3>
+    <ul id="eventos-lista" class="event-list-items"></ul>
+  </div>
+
+  <script>
+    const daysContainer = document.getElementById("days");
+    const monthTitle = document.getElementById("month");
+    const listaHTML = document.getElementById("eventos-lista");
+    const borrarBtn = document.getElementById("borrar-eventos");
+
+    let currentDate = new Date();
+    const hoy = new Date();
+
+    // Contraseñas separadas
+    const PASSWORD_AGREGAR = "sanjose";
+    const PASSWORD_BORRAR = "sanjoseborrar";
+
+    // Lista de eventos
+    let eventos = JSON.parse(localStorage.getItem("eventos")) || [
+
+ 
+    ];
+
+    const meses = [
+      "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+      "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    ];
+
+    function generarCalendario(fecha) {
+      daysContainer.innerHTML = "";
+      const year = fecha.getFullYear();
+      const month = fecha.getMonth();
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+      monthTitle.innerText = `${meses[month]} ${year}`;
+
+      let blanks = firstDay === 0 ? 6 : firstDay - 1;
+      for (let i = 0; i < blanks; i++) {
+        const emptyDiv = document.createElement("div");
+        daysContainer.appendChild(emptyDiv);
+      }
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dayDiv = document.createElement("div");
+        dayDiv.classList.add("day");
+        dayDiv.innerText = day;
+
+        // Día actual
+        if (
+          day === hoy.getDate() &&
+          month === hoy.getMonth() &&
+          year === hoy.getFullYear()
+        ) {
+          dayDiv.classList.add("hoy");
+        }
+
+        // Buscar eventos para este día
+        eventos.forEach(evento => {
+          if (
+            day === evento.dia &&
+            month === evento.mes &&
+            year === evento.anio
+          ) {
+            dayDiv.style.backgroundColor = evento.color;
+            dayDiv.style.color = "white";
+            dayDiv.style.fontWeight = "bold";
+            dayDiv.style.borderRadius = "10px";
+            dayDiv.title = evento.descripcion;
+          }
+        });
+
+        daysContainer.appendChild(dayDiv);
+      }
+
+      actualizarListaEventos();
+    }
+
+    function actualizarListaEventos() {
+      listaHTML.innerHTML = "";
+      eventos.forEach(evento => {
+        const item = document.createElement("li");
+        item.textContent = `${evento.dia}/${evento.mes + 1}/${evento.anio}: ${evento.descripcion}`;
+        item.style.color = evento.color;
+        listaHTML.appendChild(item);
+      });
+    }
+
+    function agregarEvento() {
+      const dia = parseInt(document.getElementById("input-dia").value);
+      const mes = parseInt(document.getElementById("input-mes").value) - 1; // Enero = 0
+      const anio = parseInt(document.getElementById("input-anio").value);
+      const descripcion = document.getElementById("input-descripcion").value.trim();
+      const tipo = document.getElementById("input-tipo").value;
+
+      // Validar campos
+      if (!dia || mes < 0 || !anio || !descripcion) {
+        alert("Por favor, completá todos los campos correctamente.");
+        return;
+      }
+
+      // Pedir contraseña para agregar
+      const pass = prompt("Ingrese la contraseña para agregar eventos:");
+      if (pass !== PASSWORD_AGREGAR) {
+        alert("Contraseña incorrecta. No se agregó el evento.");
+        return;
+      }
+
+      // Colores según tipo
+      const coloresPorTipo = {
+        feriado: "#f8312f",
+        examen: "#ffd700",
+        evento: "#90ee90",
+        acto: "#0076bd",
+        reunion: "#8d65c5"
+      };
+      const color = coloresPorTipo[tipo] || "#cccccc";
+
+      eventos.push(
+        { dia, mes, anio, color, descripcion }
+
+        );
+
+
+//PARA AGREGAR EVENTOS DESDE JAVASCRIPT*//
+    const nuevosEventos = [
+
+];
+
+
+nuevosEventos.forEach(nuevo => {
+  const existe = eventos.some(e =>
+    e.dia === nuevo.dia &&
+    e.mes === nuevo.mes &&
+    e.anio === nuevo.anio &&
+    e.descripcion === nuevo.descripcion
+  );
+  if (!existe) eventos.push(nuevo);
+});
+
+
+
+
+      localStorage.setItem("eventos", JSON.stringify(eventos));
+
+      generarCalendario(currentDate);
+
+      // Limpiar inputs
+      document.getElementById("input-dia").value = "";
+      document.getElementById("input-mes").value = "";
+      document.getElementById("input-anio").value = "";
+      document.getElementById("input-descripcion").value = "";
+      document.getElementById("input-tipo").value = "feriado";
+    }
+
+    borrarBtn.onclick = () => {
+      // Pedir contraseña para borrar
+      const pass = prompt("Ingrese la contraseña para borrar todos los eventos:");
+      if (pass !== PASSWORD_BORRAR) {
+        alert("Contraseña incorrecta. No se borraron los eventos.");
+        return;
+      }
+      if (confirm("¿Estás seguro de que querés borrar todos los eventos?")) {
+        localStorage.removeItem("eventos");
+        eventos = [];
+        generarCalendario(currentDate);
+      }
+    };
+
+    document.getElementById("prev").onclick = () => {
+      currentDate.setMonth(currentDate.getMonth() - 1);
+      generarCalendario(currentDate);
+    };
+
+    document.getElementById("next").onclick = () => {
+      currentDate.setMonth(currentDate.getMonth() + 1);
+      generarCalendario(currentDate);
+    };
+
+    // Iniciar calendario
+    generarCalendario(currentDate);
+  </script>
+ 
+<script src="js/script.js"></script>
+<!-- FOOTER OFICIAL -->
+<footer id="contacto" style="background-color: #1f2937; color: white; padding: 40px 20px; display: flex; flex-wrap: wrap; justify-content: space-around; font-size: 14px;">
+      <div style="flex: 1; min-width: 250px; margin: 10px;">
+      <h3>Contacto</h3>
+      <p><strong>Instituto Centro San José</strong></p>
+      <p>Teléfono: (011) 2127-2003</p>
+      <p>Teléfono Administración: (011) 6812-2201</p>
+      <p>Teléfono Preceptoría: (011) 7622-3311</p>
+      <p>Email: contacto@institutosanjose.edu.ar</p>
+    </div>
+    <div style="flex: 1; min-width: 250px; margin: 10px;">
+      <h3>Dirección</h3>
+      <p>Achega 5851 - Km. 29</p>
+      <p>Gonzalez Catán, Provincia de Buenos Aires</p>
+      <p>CP 1759</p>
+    </div>
+    <div style="flex: 1; min-width: 250px; margin: 10px;">
+      <h3>Enlaces Útiles</h3>
+      <ul style="list-style: none; padding: 0;">
+        <li><a href="reglamento.html" style="color: white; text-decoration: none;">Reglamento Escolar</a></li>
+        <li><a href="formularios.html" style="color: white; text-decoration: none;">Inscripciones</a></li>
+        <li><a href="calendario.html" style="color: white; text-decoration: none;">Calendario Académico</a></li>
+        <li><a href="#" style="color: white; text-decoration: none;">Personalidades de la institucion</a></li>
+      </ul>
+    </div>
+    <div style="flex: 1; min-width: 250px; margin: 10px;">
+      <h3>Redes Sociales</h3>
+      <p>
+        <a href="https://www.facebook.com/p/Instituto-Centro-San-José-100057678535324/" style="color: white; margin-right: 10px; text-decoration: none;">📘 Facebook</a><br />
+        <a href="https://www.instagram.com/instituto_centro_san_jose/" style="color: white; margin-right: 10px; text-decoration: none;">📷 Instagram</a><br />
+        <a href="#" style="color: white; margin-right: 10px; text-decoration: none;">🎥 YouTube</a>
+      </p>
+    </div>
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3277.6362948142355!2d-58.61554618920699!3d-34.764753665906724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcc4f7eab54fc9%3A0x53c7aaacf48f0313!2sColegio%20T%C3%A9cnico%20Instituto%20Centro%20San%20Jos%C3%A9!5e0!3m2!1ses!2sar!4v1753941259959!5m2!1ses!2sar" width="1400" height="800" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+
+
+    
+    <div style="width: 100%; text-align: center; margin-top: 30px; font-size: 12px; border-top: 1px solid #444; padding-top: 15px;">
+      &copy; 2025 Instituto Centro San José
+    </div>
+  <p>Instituto Centro San José · Escuela Secundaria Técnica</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

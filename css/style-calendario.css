@@ -1,0 +1,333 @@
+:root {
+  --azul: #0f172a;
+  --amarillo: #facc15;
+  --gris: #e5e7eb;
+}
+
+/* ================= RESET ================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter', sans-serif;
+}
+
+/* ================= FONDO GENERAL ================= */
+/* 👉 IMAGEN DE FONDO DE TODA LA PÁGINA */
+
+body{
+  background-image: url("../img/taller1-bg.png"); /* ← CAMBIAR ACÁ */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  color: var(--azul);
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:1rem 2rem;
+  background-color: var(--azul);
+  color:white;
+  position:relative;
+  z-index:1000;
+}
+
+.nav-left{
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+}
+
+.logo{
+  height:72px;
+}
+
+.navbar h1{
+  font-size:1.25rem;
+  font-weight:600;
+}
+
+.navbar nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:1rem;
+  font-weight:500;
+}
+
+/* BOTÓN FORMULARIOS – EXACTO */
+.form-button {
+  background-color: #00aaff;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  position: relative;
+  right: px;
+}
+
+/* ================= HERO ================= */
+/* 👉 IMAGEN PRINCIPAL */
+
+.hero{
+  height:45vh;
+  background-image:
+    linear-gradient(rgba(15,23,42,.75), rgba(15,23,42,.75)),
+    url("../img/hero-calendario.jpg"); /* ← CAMBIAR ACÁ */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+}
+
+.hero h2{
+  font-size:2.5rem;
+}
+
+.hero p{
+  font-size:1.1rem;
+  opacity:.9;
+}
+
+/* ================= CALENDARIO ================= */
+
+.calendario{
+  max-width:900px;
+  margin:0 auto;
+  padding:4rem 2rem;
+
+  display:grid;
+  gap:1.5rem;
+}
+
+.evento{
+  background:white;
+  padding:1.8rem 2rem;
+  border-radius:12px;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.fecha{
+  font-weight:700;
+  color:var(--amarillo);
+}
+
+.evento h3{
+  margin:.6rem 0;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+  .navbar{
+    flex-direction:column;
+    gap:.8rem;
+  }
+
+  .hero h2{
+    font-size:2rem;
+  }
+}
+
+.calendar { 
+  width: 600px; 
+  margin: auto; 
+}
+
+.header, .weekdays, .days { 
+  display: grid; 
+  grid-template-columns: repeat(7,1fr); 
+  font-family: sans-serif; 
+}
+
+.header button { 
+  cursor: pointer; 
+}
+
+.weekdays div { 
+  text-align:center; 
+  background:#ccc; 
+  padding:5px; 
+}
+
+.days div { 
+  text-align:right; 
+  padding:8px; 
+  border:1px solid #ddd; 
+  min-height:50px; 
+}
+
+.today { 
+  background-color:#007BFF;
+}
+
+.calendar-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 40px auto;
+  max-width: 1000px;
+}
+
+.legend {
+  min-width: 200px;
+  font-size: 14px;
+}
+
+.legend ul {
+  list-style: none;
+  padding: 0;
+}
+
+.legend li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.legend .color-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.dot-feriado { background-color: #007BFF; }     /* Azul */
+.dot-examen  { background-color: #8e44ad; }     /* Violeta */
+.dot-reunion { background-color: #e67e22; }     /* Naranja */
+.dot-evento  { background-color: #27ae60; }     /* Verde */
+.dot-aviso   { background-color: #e74c3c; }     /* Rojo */
+
+.feriado {
+  background-color: #ffcccc;  /* color rosa claro */
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+.calendar {
+  max-width: 400px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #aaa;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.header button {
+  padding: 5px 10px;
+}
+
+.weekdays, .days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.weekdays div {
+  font-weight: bold;
+  text-align: center;
+}
+
+.day {
+  background-color: #e0e0e0;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.day.hoy {
+  background-color: #5aa9ff;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #0055cc;
+}
+
+.legend, .event-form, .event-list {
+  margin: 30px auto;
+  max-width: 400px;
+  background: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+.event-list {
+  margin: 30px auto;
+  max-width: 350px;
+  background: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+.event-form input, .event-form select {
+  padding: 5px;
+  margin: 5px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.event-form button {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.event-form button:hover {
+  background: #0056b3;
+}
+
+ul.event-list-items {
+  list-style: none;
+  padding: 0;
+}
+
+ul.event-list-items li {
+  padding: 5px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+button#borrar-eventos {
+  background: red;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  max-width: 400px;
+  margin: 10px auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  /* ajustes mobile */
+}

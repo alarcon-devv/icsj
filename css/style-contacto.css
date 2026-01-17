@@ -1,0 +1,175 @@
+:root {
+  --azul: #0f172a;
+  --celeste: #00aaff;
+  --gris: #e5e7eb;
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: #f8fafc;
+  color: var(--azul);
+}
+
+/* NAVBAR */
+.navbar {
+  background-color: var(--azul);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+
+.logo {
+  height: 72px;
+}
+
+.navbar nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 1rem;
+}
+
+.navbar h1{
+  font-size:1.25rem;
+  font-weight:600;
+  margin:0;
+}
+
+/* CONTENEDOR */
+.contacto-container {
+  max-width: 1100px;
+  margin: 3rem auto;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+/* INFO */
+.contacto-info h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.contacto-info p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.datos-escuela p {
+  margin-bottom: .5rem;
+}
+
+/* FORMULARIO */
+.contacto-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+.contacto-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.contacto-form input,
+.contacto-form textarea {
+  margin-top: .4rem;
+  padding: .7rem;
+  border-radius: 8px;
+  border: 1px solid var(--gris);
+  font-size: .95rem;
+}
+
+.contacto-form input:focus,
+.contacto-form textarea:focus {
+  outline: none;
+  border-color: var(--celeste);
+}
+
+.contacto-form button {
+  width: 100%;
+  margin-top: 1rem;
+  padding: .9rem;
+  background-color: var(--celeste);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.contacto-form button:hover {
+  opacity: .9;
+}
+
+.estado {
+  margin-top: .8rem;
+  font-size: .9rem;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--azul);
+  color: white;
+  margin-top: 3rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .contacto-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-button {
+  background-color: #00aaff;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  position: relative;
+  right: px; /* Esto puede estar desalineando el botón */
+}
+
+.whatsapp-btn {
+  background-color: #00aaff;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  position: relative;
+  right: px; /* Esto puede estar desalineando el botón */
+}
+
+@media (max-width: 768px) {
+  /* ajustes mobile */
+}

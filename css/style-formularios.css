@@ -1,0 +1,168 @@
+:root {
+  --azul: #0f172a;
+  --amarillo: #facc15;
+  --gris: #e5e7eb;
+}
+
+/* ================= RESET ================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter', sans-serif;
+}
+
+/* ================= FONDO GENERAL ================= */
+/* 👉 IMAGEN DE FONDO DE TODA LA PÁGINA */
+
+body{
+  background-image: url("../img/taller1-bg.png"); /* ← CAMBIAR ACÁ */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  color: var(--azul);
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:1rem 2rem;
+  background-color: var(--azul);
+  color:white;
+  position:relative;
+  z-index:1000;
+}
+
+.nav-left{
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+}
+
+.logo{
+  height:72px;
+}
+
+.navbar h1{
+  font-size:1.25rem;
+  font-weight:600;
+}
+
+.navbar nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:1rem;
+  font-weight:500;
+}
+
+/* BOTÓN FORMULARIOS – EXACTO */
+.form-button {
+  background-color: #00aaff;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  position: relative;
+  right: px;
+}
+
+/* ================= HERO ================= */
+/* 👉 IMAGEN PRINCIPAL */
+
+.hero{
+  height:45vh;
+  background-image:
+    linear-gradient(rgba(15,23,42,.75), rgba(15,23,42,.75)),
+    url("../img/hero-formularios.jpg"); /* ← CAMBIAR ACÁ */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+}
+
+.hero h2{
+  font-size:2.5rem;
+}
+
+.hero p{
+  font-size:1.1rem;
+  opacity:.9;
+}
+
+/* ================= CONTENEDOR ================= */
+
+.contenedor{
+  max-width:1100px;
+  margin:0 auto;
+  padding:4rem 2rem;
+
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+  gap:2rem;
+}
+
+/* ================= CARDS ================= */
+
+.card{
+  background:white;
+  padding:2rem;
+  border-radius:14px;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+  text-align:center;
+  transition:transform .3s ease;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+.card h3{
+  margin-bottom:.8rem;
+}
+
+.card p{
+  font-size:.95rem;
+  margin-bottom:1.2rem;
+}
+
+.card a{
+  display:inline-block;
+  background:var(--azul);
+  color:white;
+  padding:.6rem 1.4rem;
+  border-radius:20px;
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+  .navbar{
+    flex-direction:column;
+    gap:.8rem;
+  }
+
+  .hero h2{
+    font-size:2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* ajustes mobile */
+}

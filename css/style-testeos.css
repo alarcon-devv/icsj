@@ -1,0 +1,365 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  /* Cambié aquí el fondo sólido por imagen */
+  background-image: url('../img/bg1.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+header {
+  background-color: #1f2937;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  gap: 10px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: #1f2937;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+.dropdown-content a {
+  color: #1f2937;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #111827;
+}
+
+.welcome {
+  text-align: center;
+  margin: 60px auto;
+  max-width: 800px;
+}
+
+.welcome h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.welcome p {
+  font-size: 18px;
+  color: black;
+}
+
+.content {
+  padding: 40px 20px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.box {
+  background-color: white;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: 300px;
+
+  /* Animación inicial */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1.5s ease-out;
+}
+
+.box.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.box h2 {
+  color: #1f2937;
+}
+
+.photo-gallery img {
+  transition: transform 0.4s ease;
+}
+
+.photo-gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+}
+
+.image-container img:hover {
+  transform: scale(1.05);
+}
+
+#lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  box-shadow: 0 0 20px black;
+  border-radius: 6px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.calendar { 
+  width: 600px; 
+  margin: auto; 
+}
+
+.header, .weekdays, .days { 
+  display: grid; 
+  grid-template-columns: repeat(7,1fr); 
+  font-family: sans-serif; 
+}
+
+.header button { 
+  cursor: pointer; 
+}
+
+.weekdays div { 
+  text-align:center; 
+  background:#ccc; 
+  padding:5px; 
+}
+
+.days div { 
+  text-align:right; 
+  padding:8px; 
+  border:1px solid #ddd; 
+  min-height:50px; 
+}
+
+.today { 
+  background-color:#007BFF;
+}
+
+.calendar-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 40px auto;
+  max-width: 1000px;
+}
+
+.legend {
+  min-width: 200px;
+  font-size: 14px;
+}
+
+.legend ul {
+  list-style: none;
+  padding: 0;
+}
+
+.legend li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.legend .color-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.dot-feriado { background-color: #007BFF; }     /* Azul */
+.dot-examen  { background-color: #8e44ad; }     /* Violeta */
+.dot-reunion { background-color: #e67e22; }     /* Naranja */
+.dot-evento  { background-color: #27ae60; }     /* Verde */
+.dot-aviso   { background-color: #e74c3c; }     /* Rojo */
+
+.feriado {
+  background-color: #ffcccc;  /* color rosa claro */
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+.calendar {
+  max-width: 400px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #aaa;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.header button {
+  padding: 5px 10px;
+}
+
+.weekdays, .days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.weekdays div {
+  font-weight: bold;
+  text-align: center;
+}
+
+.day {
+  background-color: #e0e0e0;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.day.hoy {
+  background-color: #5aa9ff;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #0055cc;
+}
+
+.legend, .event-form, .event-list {
+  margin: 30px auto;
+  max-width: 400px;
+  background: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+.event-list {
+  margin: 30px auto;
+  max-width: 350px;
+  background: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+.event-form input, .event-form select {
+  padding: 5px;
+  margin: 5px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.event-form button {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.event-form button:hover {
+  background: #0056b3;
+}
+
+ul.event-list-items {
+  list-style: none;
+  padding: 0;
+}
+
+ul.event-list-items li {
+  padding: 5px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+button#borrar-eventos {
+  background: red;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  max-width: 400px;
+  margin: 10px auto;
+  display: block;
+}
+
+.form-button {
+  background-color: #00aaff;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  position: relative;
+  right: 400px; /* Esto puede estar desalineando el botón */
+}
